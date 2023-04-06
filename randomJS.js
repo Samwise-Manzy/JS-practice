@@ -66,3 +66,5 @@ function confirmEnding(str, target) {
   }
   
   console.log(confirmEnding("Bastian", "n"));
+
+  console.log("test");
