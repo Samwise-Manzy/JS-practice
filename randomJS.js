@@ -190,6 +190,143 @@ function frankenSplice(arr1, arr2, n) {
     return newArr;
 }
 
-console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+// console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
 
 
+// ****************************************************
+
+
+// Remove all falsy values from an array. Return a new array; do not mutate the original array.
+
+// Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+
+// Hint: Try converting each value to a Boolean.
+
+function bouncer(arr) {
+    let newArr = [];        // create new array
+
+    for (let i = 0; i < arr.length; i++) {      // loop through argument array
+        if (!!arr[i] === true) {                // converts array elements into boolean values and checks if falsey
+            newArr.push(arr[i]);                // pushes non-falsey values into newArr
+        }
+    }
+
+    return newArr;
+  }
+  
+//   console.log(bouncer([7, "ate", "", false, 9]));
+
+
+
+// ****************************************************
+
+
+// Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+// For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+// Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+
+function getIndexToIns(arr, num) {
+    let temp = 0;
+    let insertIndex = 0;
+
+    const quickSort = (arr) => {    // quick sort arr
+        if (arr.length <= 1) {
+          return arr;
+        }
+      
+        let pivot = arr[0];
+        let leftArr = [];
+        let rightArr = [];
+      
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] < pivot) {
+            leftArr.push(arr[i]);
+          } else {
+            rightArr.push(arr[i]);
+          }
+        }
+      
+        return [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
+      };
+
+    arr = quickSort(arr);       // set sorted arr
+      
+
+    console.log(arr);
+
+    for (let i = 0; i < arr.length; i++) {      // finds lowest index for num arguement
+        if (arr[i] >= num) {
+            insertIndex = i;
+            break;
+        } else {
+            insertIndex = i + 1;
+        }
+    }
+    
+    
+    return insertIndex;
+  }
+  
+//   console.log(getIndexToIns([5, 3, 20, 4], 5));
+
+
+
+// ****************************************************
+
+// Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+// For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+// The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
+
+// Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien.
+
+function mutation(arr) {
+    let compareArr = [];    // creating new array of charaters; easier to compare 
+    // let includesCount = arr[1].length;      //count use to measure number of matching characters; if count matches, all charaters in second element of array match
+
+
+    for (let i = 0; i < arr[1].length; i++) {       // new array of lower case characters
+        compareArr.push(arr[1][i].toLowerCase());
+    }
+
+    // for (let i = 0; i < arr[1].length; i++) {       // loop through arr elements to check for matching characters
+    //     if (compareArr.includes(arr[1][i].toLowerCase())) {
+    //         includesCount--;                        // counting matched characters; 
+    //     }                                           // if all characters match; count shoud be 0 at end of loop 
+    // }
+
+    for (let i = 0; i < compareArr.length; i ++) {      // use indexOf to check if first string contains characters in second string
+        if (arr[0].toLowerCase().indexOf(compareArr[i]) < 0) {
+            return false
+        }
+    }
+
+    return true;
+
+    // if (includesCount === 0) {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+    
+  }
+  
+//   console.log(mutation(["hello", "hey"]));
+
+
+
+
+  // ****************************************************
+
+
+//   Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+function chunkArrayInGroups(arr, size) {
+    return arr;
+  }
+  
+  chunkArrayInGroups(["a", "b", "c", "d"], 2);
