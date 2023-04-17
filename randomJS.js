@@ -326,23 +326,24 @@ function mutation(arr) {
 //   Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
 
 function chunkArrayInGroups(arr, size) {
-    let arr2D = [];
+    let arr2D = []; // create new array
     let numArr = Math.ceil(arr.length / size);     // insicates number of array elements based off arr size and size arguemnts passed into function 
-    sizeIteration = 
+    let start = 0;  // used to push elements from arr to arr2D using slice method
+    let sizeInput = size; // useed to push last element from arr to arr2D using slice mothod
+    
 
-    console.log(numArr);
 
     for (let i = 0; i < numArr; i++) {
-      for (let j = 0; j < size; j++) {
-        arr2D[j].push(arr[j]);
-        console.log(arr2D);
-        i++;
-      }
+        arr2D[i] = [];                            // creates 2D array element 
+        arr2D[i] = arr.slice(start, sizeInput);   // use slice method to push elements from arr to arr2D
+        start += size;                            // incremented elements to push from arr to arr2D
+        sizeInput += size;
     }
 
-    return arr;
+
+    return arr2D;
   }
   
-  chunkArrayInGroups(["a", "b", "c", "d"], 2);
+  console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
 
   
