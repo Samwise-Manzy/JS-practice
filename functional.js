@@ -602,3 +602,35 @@ function urlSlug(title) {
 // Only change code above this line
 // console.log(urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"));
 
+function diffArray(arr1, arr2) {
+  const newArr = [];
+
+  function compareArr (first, second) {
+    for (let i = 0; i < first.length; i++) {
+      if (second.indexOf(first[i]) === -1) {
+        newArr.push(first[i]);
+      }
+    }
+  }
+
+  compareArr(arr1, arr2);
+  compareArr(arr2, arr1);
+
+  return newArr;
+}
+
+let testArr = diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
+
+// console.log(testArr);
+
+// // ***************************************************
+
+// You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+
+// Note: You have to use the arguments object.
+
+function destroyer(arr) {
+  return arr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
