@@ -630,7 +630,21 @@ let testArr = diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "d
 // Note: You have to use the arguments object.
 
 function destroyer(arr) {
-  return arr;
+  let newBattleField = [];
+  let battleField = Object.values(arguments)[0];
+  let objectsToDestoy = Object.values(arguments).slice(1);
+
+  
+
+  for (let i = 0; i < battleField.length; i++) {
+    if (objectsToDestoy.indexOf(battleField[i]) === -1) {
+      newBattleField.push(battleField[i]);
+    }
+  };
+
+  return newBattleField;
 }
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+
